@@ -11,6 +11,7 @@ If we declared an Object using literals then it doesn't Singleton actually it cr
 //declaring an Object
 // Object.create //2nd Way (Constructor)
 //Using Literals Declaration of an Object
+const mySym = Symbol("Key1")
 const JSUser = {
     firstName: "Sanchit",
     lastName: "Deshmukh",
@@ -21,9 +22,32 @@ const JSUser = {
     Country: "India",
     ZipCode: 444001,
     Designation: "Developer",
-    Experience: 4
+    Experience: 4,
+    email: "sanchit@google.com",
+    mySym: "MyKey",
+    [mySym]: "MyKey!",
+    "full name": "Sanchit Deshmukh" //For demo/learning purpose (If we fetch it using . then it won't be coming. So, fetch we need to used an array)
 } //1st way  (Literals) 
+
 //Curely braces is actually an Object currently it is an empty object.
 //We can define the both key or value. By default that key becomes a String
 //The value can be Object, Boolean, Number, String, Character etc.
-console.log(JSUser.firstName());
+console.log(JSUser.firstName); //1st Way to fetch the value
+console.log(JSUser["firstName"]); // (2nd way) As we know the type becomes String by default. So, in array we are 
+//trying to fetch a data then we have give the typename as String
+console.log(JSUser[mySym]); //This is the proper syntax to declare a value
+console.log(JSUser.mySym); //Not a proper syntax to declare 
+console.log(JSUser["full name"]); //using . we can't access the value of full name. For that Array needed to be bring into the picture
+
+//____________________________________________
+//We can override the value or change the value
+JSUser.email = "Sanchit@gmail.com" //Now the value is changed of an email
+console.log(JSUser.email); //These two are the two ways to declare an array
+console.log(JSUser["email"]); // Need to give it as a String in an array
+
+//_______________________________________________
+//Scenarion is: CLient dont want anyone to change the data.So for that we have freeze() method
+Object.freeze(JSUser) //So this freeze method we not allow us to change the data
+JSUser.email = "sanchit@blackbox.com"
+// console.log(JSUser["email"]);
+console.log(JSUser);
