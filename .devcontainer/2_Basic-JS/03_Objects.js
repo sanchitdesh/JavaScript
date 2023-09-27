@@ -47,7 +47,30 @@ console.log(JSUser["email"]); // Need to give it as a String in an array
 
 //_______________________________________________
 //Scenarion is: CLient dont want anyone to change the data.So for that we have freeze() method
-Object.freeze(JSUser) //So this freeze method we not allow us to change the data
+//Object.freeze(JSUser) //So this freeze method we not allow us to change the data
 JSUser.email = "sanchit@blackbox.com"
 // console.log(JSUser["email"]);
 console.log(JSUser);
+
+
+//__________________________________________________________
+//Functions: It can be treated as Variables 
+JSUser.greeting = function(){
+    console.log("Hello JS User");
+}
+console.log(JSUser.greeting); //undefined //function Anonymous
+//If we make greeting as function means greeting()
+//console.log(JSUser.greeting()); //Will throw an error as "greeting is not a function"  (During it is freezed)
+console.log(JSUser.greeting()); // Will give the output as "Hello JS User"
+//To make it print. we need to make it unfreezed
+
+
+//Second function call
+//this keyword is used to call the data from other class or other 
+JSUser.greetingOne = function(){
+    console.log(`JS User name is ${this.firstName} ${this.lastName}`);
+}
+console.log(JSUser.greetingOne); //undefined (This might be because either browser or Code executor software will run the atleast once)
+console.log(JSUser.greetingOne());
+//____________________________________________________________________________________
+
