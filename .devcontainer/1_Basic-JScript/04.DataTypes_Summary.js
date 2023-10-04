@@ -81,3 +81,4 @@ Note: Null data type is "Object".
       In Simple language all the non-primitive data types are called as functions.
       Array, Object, Functions = Function Data types
       */
+     
